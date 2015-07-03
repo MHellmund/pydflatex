@@ -16,6 +16,7 @@ class Typesetter(Processor):
 
 	defaults = Processor.defaults.copy()
 	defaults.update({
+			'cmds': '',
 			'halt_on_errors': True,
 			'xetex': False,
 			})
@@ -48,8 +49,13 @@ class Typesetter(Processor):
 		now = datetime.datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 		self.logger.message("\t[{now}] {engine} {file}".format(engine=self.engine(), file=full_path, now=now))
 		arguments = self.arguments()
-		# append file name
-		arguments.append(full_path)
+		if self.options['cmds']:
+			# append cmds and then \input file name
+			full_cmds = "{cmds}\input{{{file}}}".format(cmds=self.options['cmds'], file=full_path)
+			arguments.append(full_cmds)
+		else:
+			# append file name
+			arguments.append(full_path)
 		self.logger.debug("\n"+" ".join(arguments)+"\n")
 		output = subprocess.Popen(arguments, stdout=subprocess.PIPE).communicate()[0]
 		self.logger.message(output.splitlines()[0])

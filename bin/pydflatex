@@ -44,6 +44,7 @@ add_option(parser, Runner, '-l', '--log-parsing', dest='typesetting', help='Only
 
 add_option(parser, Runner, '-t', '--typesetting', dest='log_parsing', help='Only typeset', action='store_false')
 
+add_option(parser, Typesetter, '--cmds', dest='cmds', help='Commands to precede tex file', type=str)
 
 parser.add_argument('tex_path', type=str, metavar='tex path', help='path to tex file')
 
