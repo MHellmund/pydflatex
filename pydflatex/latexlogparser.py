@@ -280,7 +280,7 @@ class LogCheck (object):
 					info = missing_char.groupdict()
 					missing_char = info['missing']
 					## raise Exception(info)
-					d = {'kind': 'warning', 'text': u'Missing character: "{}"'.format(missing_char)}
+					d = {'kind': 'warning', 'text': 'Missing character: "{}"'.format(missing_char)}
 					d.update(mpos)
 					yield d
 				continue
