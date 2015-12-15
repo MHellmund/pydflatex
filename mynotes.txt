@@ -1,10 +1,10 @@
 
-apt-get install python3-termstyle
+apt-get install python3-termstyle python3-nose
 python3 setup.py build
 nosetests3 -v
 su
 python3 setup.py install --record=installed_files --home=/opt
-
+exit
 
 
 
