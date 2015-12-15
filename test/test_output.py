@@ -295,7 +295,7 @@ class TestOutput(Harness):
 
 	def test_output_files(self):
 		expected = ['./simple.fls', 'simple.log', 'simple.aux', 'simple.pdf']
-		computed = list(Cleaner.output_files(os.path.join(test_dir, 'simple.fls')))
+		computed = list(Cleaner.output_files(os.path.join(latex_dir, 'simple.fls')))
 		self.assertEqual(computed[1:], expected[1:])
 
 class TestModules(unittest.TestCase):

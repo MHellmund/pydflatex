@@ -221,7 +221,7 @@ class LogCheck (object):
 
 			if prefix is not None:
 				if line[:len(prefix)] == prefix:
-					text.append(string.strip(line[len(prefix):]))
+					text.append(str.strip(line[len(prefix):]))
 				else:
 					text = " ".join(text)
 					m = re_online.search(text)
